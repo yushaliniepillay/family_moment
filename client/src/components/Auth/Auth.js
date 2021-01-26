@@ -4,10 +4,10 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { signin, signup } from '../../actions/auth';
-import { AUTH } from '../../constants/actionTypes';
+// import { AUTH } from '../../constants/actionTypes';
 import Input from './Input';
 import useStyles from './styles';
-import Icon from './icon';
+//import Icon from './icon';
 
 const initialState = { firstName: '', lastName: '', email: '', password: '', confirmPassword: '' };
 
