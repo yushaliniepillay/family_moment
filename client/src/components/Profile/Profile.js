@@ -12,6 +12,9 @@ const Profile = () => {
   const classes = useStyles();
   const tileData = useSelector((state) => state.posts);
   const [currentId, setCurrentId] = useState(0);
+
+  const [name, setName] = useState('');
+
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -20,11 +23,13 @@ const Profile = () => {
 
   return (
     <Container>
+      <h1>{name}</h1>
       <Grid container justify="space-between" alignItems="stretch" spacing={3}>
         <Grid item xs={12} sm={7}>
-          <GridList setCurrentId={setCurrentId} cellHeight={160} className={classes.gridList} cols={3}>
+          <GridList currentId={currentId} cellHeight={160} className={classes.gridList} cols={3}>
             {tileData.map((tile) => (
               <GridListTile key={tile.selectedFile} cols={tile.cols || 1}>
+                
                 <CardMedia image={tile.selectedFile} />
                 {/* <img alt={tile.selectedFile} /> */}
               </GridListTile>

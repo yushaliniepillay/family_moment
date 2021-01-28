@@ -62,7 +62,7 @@ const Post = ({ post, setCurrentId }) => {
       </CardActions>
       <CardActions>
         {(user?.result.googleId || user?.result._id) && (
-          <Button onClick={() => setCurrentId(post._id)} component={Link} to="/profile" size="small">
+          <Button onClick={() => setCurrentId(post._id)} component={Link} to={{pathname: `/profile/${post._id}`}} size="small">
             Learn More
           </Button>
         )}
