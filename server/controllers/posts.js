@@ -19,6 +19,7 @@ export const getPost = async (req, res) => {
     const { id } = req.params;
 
     try {
+        if (!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send(`No post with id: ${id}`);
         const post = await PostMessage.findById(id);
         
         res.status(200).json(post);
@@ -39,6 +40,19 @@ export const createPost = async (req, res) => {
     } catch (error) {
         res.status(409).json({ message: error.message });
     }
+}
+
+export const insertImg = async (req, res) => {
+    const { id } = req.params;
+    const { creator, selectedFile } = req.body;
+    
+    if (!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send(`No post with id: ${id}`);
+
+    const insertImg = { creator, selectedFile, _id: id };
+
+    await PostMessage.findByIdAndUpdate(id, insertImg, { new: true });
+
+    res.json(insertImg);
 }
 
 export const updatePost = async (req, res) => {
