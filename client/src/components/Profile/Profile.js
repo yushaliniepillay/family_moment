@@ -8,7 +8,7 @@ import { getPost } from '../../actions/posts';
 import Form from './Form/Form';
 import useStyles from './styles';
 
-const Profile = () => {
+const Profile = ({post}) => {
   const classes = useStyles();
   const tileData = useSelector((state) => state.posts);
   const [currentId, setCurrentId] = useState(0);
@@ -23,10 +23,10 @@ const Profile = () => {
 
   return (
     <Container>
-      <h1>{name}</h1>
+      <h1>Title</h1>
       <Grid container justify="space-between" alignItems="stretch" spacing={3}>
         <Grid item xs={12} sm={7}>
-          <GridList currentId={currentId} cellHeight={160} className={classes.gridList} cols={3}>
+          <GridList cellHeight={160} className={classes.gridList} cols={3}>
             {tileData.map((tile) => (
               <GridListTile key={tile.selectedFile} cols={tile.cols || 1}>
                 
